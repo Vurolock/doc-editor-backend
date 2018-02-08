@@ -15,6 +15,18 @@ router.route('/')
       .then(allNotes => {
         res.json(allNotes);
       });
+  })
+  .post((req, res) => {
+    console.log(req.body);
+    Note.create({
+      title: req.body.title,
+      content: req.body.content
+    }).then(() => {
+      // responds with error 201 'create' since there is no render or redirect to respond with
+      res.status(201).send();
+    }).catch((error) => {
+      console.log(error);
+    })
   });
 
 module.exports = router;
