@@ -41,12 +41,12 @@ router.route('/')
 		});
   	})
 	.delete((req, res) => {
-		Note.destroy({
-			// delete here
-		}).then((deletedNote) => {
-			// responds with deleted note
-			res.json(deletedNote)
+		Note.findOne({
+			where: {id: req.body.id}
+		}).then(note => {
+			note.destroy()
+				.then(() => res.send());
 		});
-	});
+  	});
 
 module.exports = router;
