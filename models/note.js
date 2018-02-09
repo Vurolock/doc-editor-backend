@@ -8,8 +8,6 @@ const Note = sequelize.define('note', {
     content: {
         type: Sequelize.STRING
     }
-}, {
-    timestamps: false
 });
 
 module.exports = Note;

@@ -12,7 +12,7 @@ router.all('*', (req, res, next) => {
 router.route('/')
   	.get((req, res) => {
     	Note.findAll({
-			order: [['id', 'ASC']]
+			order: [['updatedAt', 'DESC']]
 		}).then(allNotes => {
 			// responds with all notes
         	res.json(allNotes);
